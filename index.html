@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z2WAV - File to WAV Converter</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <h1>Z2WAV</h1>
+      <p>File &harr; WAV reversible converter (Web edition)</p>
+    </header>
+
+    <!-- Safety Warning -->
+    <div class="safety-warning" id="safety-warning">
+      <h2>Safety Warning</h2>
+      <ul>
+        <li>Z2WAV files produce <strong>random noise</strong> when played as audio</li>
+        <li>Output can reach <strong>maximum amplitude</strong></li>
+        <li>Headphone / earphone use is <strong>especially dangerous</strong></li>
+        <li>Playback is <strong>not recommended</strong></li>
+      </ul>
+      <button class="btn-acknowledge" id="btn-acknowledge">I understand - proceed</button>
+    </div>
+
+    <!-- Main Content (hidden until warning acknowledged) -->
+    <div id="main-content" class="hidden">
+
+      <!-- Environment Info -->
+      <div class="env-bar" id="env-info"></div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <div class="tab active" id="tab-encode">Encode</div>
+        <div class="tab" id="tab-decode">Decode</div>
+      </div>
+
+      <!-- Encode Panel -->
+      <div class="panel" id="panel-encode">
+        <div class="dropzone" id="encode-dropzone">
+          <span class="dropzone-icon">&darr;</span>
+          <p>Drop a file here or click to select</p>
+        </div>
+        <input type="file" id="encode-input" style="display:none">
+
+        <div class="file-info hidden" id="encode-file-info"></div>
+
+        <div class="options">
+          <label>
+            <input type="checkbox" id="use-deflate" checked>
+            DEFLATE compression
+          </label>
+        </div>
+
+        <button class="btn-primary" id="btn-encode" disabled>Encode to WAV</button>
+
+        <div class="progress-container hidden" id="encode-progress-container">
+          <progress id="encode-progress" value="0" max="100"></progress>
+          <div class="progress-text" id="encode-progress-text"></div>
+        </div>
+
+        <div class="result-container hidden" id="encode-result"></div>
+      </div>
+
+      <!-- Decode Panel -->
+      <div class="panel hidden" id="panel-decode">
+        <div class="dropzone" id="decode-dropzone">
+          <span class="dropzone-icon">&darr;</span>
+          <p>Drop Z2WAV .wav file(s) here or click to select</p>
+        </div>
+        <input type="file" id="decode-input" accept=".wav" multiple style="display:none">
+
+        <div class="file-info hidden" id="decode-file-info"></div>
+
+        <button class="btn-primary" id="btn-decode" disabled>Decode from WAV</button>
+
+        <div class="progress-container hidden" id="decode-progress-container">
+          <progress id="decode-progress" value="0" max="100"></progress>
+          <div class="progress-text" id="decode-progress-text"></div>
+        </div>
+
+        <div class="result-container hidden" id="decode-result"></div>
+      </div>
+
+    </div>
+
+    <footer>
+      Z2WAV v1.0 &mdash; All processing is done locally in your browser. No data is sent externally.
+    </footer>
+
+  </div>
+
+  <!-- pako for DEFLATE compression with Z_FULL_FLUSH support -->
+  <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

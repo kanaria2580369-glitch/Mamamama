@@ -1,0 +1,19 @@
+{
+  "name": "mamamama",
+  "version": "1.0.0",
+  "description": "Z2WAV - File to WAV reversible converter",
+  "type": "module",
+  "scripts": {
+    "test": "node test-roundtrip.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:45861/git/kanaria2580369-glitch/Mamamama"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pako": "^2.1.0"
+  }
+}
